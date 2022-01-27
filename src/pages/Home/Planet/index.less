@@ -5,23 +5,49 @@
 .@{prefix} {
   width: @planetWidth;
   height: @planetWidth;
-  border-radius: @planetWidth;
-  /* #455285, #392531, #346280 */
-  background: linear-gradient(#66cab1 0%, #3b509f 100%);
-  box-shadow: 0 4px 40px 24px #346280;
-  animation: 2s ease-in-out infinite plantFloat;
   position: relative;
-  z-index: 10
+  z-index: 10;
+
+  animation: 2s ease-in-out infinite plantFloat;
+
+  @keyframes plantFloat {
+    0% {
+      margin-top: -20px;
+    }
+    50% {
+      margin-top: 20px;
+    }
+    100% {
+      margin-top: -20px;
+    }
+  }
+
+  &-body {
+    width: @planetWidth;
+    height: @planetWidth;
+    border-radius: @planetWidth;
+    /* #455285, #392531, #346280 */
+    background: linear-gradient(#66cab1 0%, #3b509f 100%);
+    box-shadow: 0 4px 40px 24px #346280;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-@keyframes plantFloat {
-  0% {
-    margin-top: -20px;
-  }
-  50% {
-    margin-top: 20px;
-  }
-  100% {
-    margin-top: -20px;
+/* 移动端 */
+@planetWidthMoblie: 40vw;
+@media (max-width: 750px) {
+  .@{prefix} {
+    width: @planetWidthMoblie;
+    height: @planetWidthMoblie;
+
+    &-body {
+      width: @planetWidthMoblie;
+      height: @planetWidthMoblie;
+      border-radius: @planetWidthMoblie;
+    }
   }
 }
