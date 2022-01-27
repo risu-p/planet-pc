@@ -1,0 +1,27 @@
+@prefix: ~"HomePlanet";
+
+@planetWidth: 240px;
+
+.@{prefix} {
+  width: @planetWidth;
+  height: @planetWidth;
+  border-radius: @planetWidth;
+  /* #455285, #392531, #346280 */
+  background: linear-gradient(#66cab1 0%, #3b509f 100%);
+  box-shadow: 0 4px 40px 24px #346280;
+  animation: 2s ease-in-out infinite plantFloat;
+  position: relative;
+  z-index: 10
+}
+
+@keyframes plantFloat {
+  0% {
+    margin-top: -20px;
+  }
+  50% {
+    margin-top: 20px;
+  }
+  100% {
+    margin-top: -20px;
+  }
+}
