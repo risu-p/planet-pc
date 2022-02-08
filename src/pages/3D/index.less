@@ -1,0 +1,55 @@
+@prefix: ~"ThreeDPage";
+
+.@{prefix} {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+
+  &-cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    /* 启用3d视图，设置观察者在 500px、中心位置 */
+    transform-style: preserve-3d;
+
+    &Surface {
+      width: 100px;
+      height: 100px;
+      background-color: rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &.is-front {
+        transform: translateZ(50px);
+        background-color: rgba(255, 0, 255, 0.8);
+      }
+      &.is-back {
+        transform: rotateX(180deg) translateZ(50px);
+        background-color: rgba(255, 0, 0, 0.8);
+      }
+      &.is-top {
+        transform: rotateX(90deg) translateZ(50px);
+        background-color: rgba(0, 255, 0, 0.8);
+      }
+      &.is-bottom {
+        transform: rotateX(-90deg) translateZ(50px);
+        background-color: rgba(0, 0, 255, 0.8);
+      }
+      &.is-left {
+        transform: rotateY(-90deg) translateZ(50px);
+        background-color: rgba(255, 255, 0, 0.8);
+      }
+      &.is-right {
+        transform: rotateY(90deg) translateZ(50px);
+        background-color: rgba(0, 255, 255, 0.8);
+      }
+    }
+  }
+}
