@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import LinkHeader from "../../components/LinkHeader";
 import "./index.less";
 
 const PREFIX = "ThreeDPage";
@@ -49,8 +50,8 @@ const ThreeD: FC<IProps> = memo(({}) => {
     if (isMouseDownRef.current) {
       const moveX = e.clientX - initMouseXRef.current;
       const moveY = e.clientY - initMouseYRef.current;
-      const nextPerspectiveX = initPerspectiveX.current + moveX/5;
-      const nextPerspectiveY = initPerspectiveY.current - moveY/5;
+      const nextPerspectiveX = initPerspectiveX.current + moveX / 5;
+      const nextPerspectiveY = initPerspectiveY.current - moveY / 5;
       setPerspectiveX(nextPerspectiveX);
       setPerspectiveY(nextPerspectiveY);
     }
@@ -71,6 +72,7 @@ const ThreeD: FC<IProps> = memo(({}) => {
 
   return (
     <div className={PREFIX}>
+      <LinkHeader url="https://juejin.cn/post/7062521901570064415" />
       <div
         className={`${PREFIX}-cube`}
         style={{
@@ -99,6 +101,8 @@ const ThreeD: FC<IProps> = memo(({}) => {
           <div>右</div>
         </div>
       </div>
+
+      <div className={`${PREFIX}-text`}>试试按住鼠标左键移动，旋转元素</div>
     </div>
   );
 });

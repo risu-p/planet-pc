@@ -1,0 +1,22 @@
+@prefix: ~"LinkHeader";
+
+.@{prefix} {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  background-color: black;
+
+  &-text {
+    color: white;
+    &Link {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}

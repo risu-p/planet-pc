@@ -4,6 +4,7 @@ import { hot } from "react-hot-loader";
 import "./index.less";
 import Home from "./pages/Home";
 import ThreeD from "./pages/3D";
+import Flex from "./pages/Flex";
 
 const PREFIX = "Risu";
 
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/3d" component={ThreeD} />
+            <Route exact path="/flex" component={Flex} />
           </Switch>
         </HashRouter>
       </div>
