@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import ThreeD from "./pages/3D";
 import Flex from "./pages/Flex";
 import Shadow from "./pages/Shadow";
+import WorkerPage from "./pages/Worker";
 
 const PREFIX = "Risu";
 
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/3d" component={ThreeD} />
             <Route exact path="/flex" component={Flex} />
             <Route exact path="/shadow" component={Shadow} />
+            <Route exact path="/worker" component={WorkerPage} />
           </Switch>
         </HashRouter>
       </div>
