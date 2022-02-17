@@ -3,6 +3,7 @@ const { merge } = require("webpack-merge");
 const devConf = require("./webpackConfig/dev");
 const prodConf = require("./webpackConfig/prod");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = (env) => {
   return merge(
@@ -44,7 +45,17 @@ module.exports = (env) => {
           },
         ],
       },
-      plugins: [new CleanWebpackPlugin()],
+      plugins: [
+        new CleanWebpackPlugin(),
+        new CopyWebpackPlugin({
+          patterns: [
+            {
+              from: path.resolve(__dirname, "public/sharedWorker"),
+              to: path.resolve(__dirname, "build/sharedWorker"),
+            },
+          ],
+        }),
+      ],
     },
     env.development ? devConf() : prodConf()
   );

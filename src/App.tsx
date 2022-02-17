@@ -7,6 +7,7 @@ import ThreeD from "./pages/3D";
 import Flex from "./pages/Flex";
 import Shadow from "./pages/Shadow";
 import WorkerPage from "./pages/Worker";
+import SharedWorkerPage from "./pages/SharedWorker";
 
 const PREFIX = "Risu";
 
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/flex" component={Flex} />
             <Route exact path="/shadow" component={Shadow} />
             <Route exact path="/worker" component={WorkerPage} />
+            <Route exact path="/sharedWorker" component={SharedWorkerPage} />
           </Switch>
         </HashRouter>
       </div>
