@@ -35,13 +35,7 @@ module.exports = (env) => {
           },
           {
             test: /\.(less|css)$/,
-            use: [
-              "style-loader",
-              "css-loader",
-              /* 使用postcss-loader，以1920为基础将px转换为vw来缩放页面；目前不启用该功能，故注释掉 */
-              // "postcss-loader",
-              "less-loader",
-            ],
+            use: ["style-loader", "css-loader", "less-loader"],
           },
         ],
       },

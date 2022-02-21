@@ -2,7 +2,7 @@
  * @Author: liuxw@codoon.com
  * @Date: 2022-02-17 14:50:33
  * @Last Modified by: liuxw@codoon.com
- * @Last Modified time: 2022-02-17 17:28:08
+ * @Last Modified time: 2022-02-21 16:19:00
  */
 
 import React, {
@@ -13,6 +13,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import LinkHeader from "../../components/LinkHeader";
 import "./index.less";
 
 const PREFIX = "SharedWorkerPage";
@@ -73,10 +74,13 @@ const SharedWorkerPage: FC<IProps> = memo(({}) => {
   }, []);
 
   return (
-    <div className={PREFIX}>
-      <div>试着打开一个新窗口，访问该页面</div>
-      <div>当前有 {connectCount} 个页面连接到了 shared worker</div>
-    </div>
+    <>
+      <LinkHeader url={"https://juejin.cn/post/7065609156446650381"} />
+      <div className={PREFIX}>
+        <div>试着打开一个新窗口，访问该页面</div>
+        <div>当前有 {connectCount} 个页面连接到了 shared worker</div>
+      </div>
+    </>
   );
 });
 

@@ -2,7 +2,7 @@
  * @Author: liuxw@codoon.com
  * @Date: 2022-02-17 10:04:03
  * @Last Modified by: liuxw@codoon.com
- * @Last Modified time: 2022-02-17 15:46:15
+ * @Last Modified time: 2022-02-21 16:18:37
  */
 
 import React, {
@@ -13,6 +13,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import LinkHeader from "../../components/LinkHeader";
 import "./index.less";
 import { workerScript } from "./workerScripts/worker";
 
@@ -48,9 +49,12 @@ const WorkerPage: FC<IProps> = memo(({}) => {
   }, []);
 
   return (
-    <div className={PREFIX}>
-      打开控制台查看 worker线程 发送给 主线程 的消息内容
-    </div>
+    <>
+      <LinkHeader url={"https://juejin.cn/post/7065558763880579086"} />
+      <div className={PREFIX}>
+        打开控制台查看 worker线程 发送给 主线程 的消息内容
+      </div>
+    </>
   );
 });
 

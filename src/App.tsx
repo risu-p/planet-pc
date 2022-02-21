@@ -8,6 +8,7 @@ import Flex from "./pages/Flex";
 import Shadow from "./pages/Shadow";
 import WorkerPage from "./pages/Worker";
 import SharedWorkerPage from "./pages/SharedWorker";
+import CssModule from "./pages/CssModules";
 
 const PREFIX = "Risu";
 
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/shadow" component={Shadow} />
             <Route exact path="/worker" component={WorkerPage} />
             <Route exact path="/sharedWorker" component={SharedWorkerPage} />
+            <Route exact path="/cssModules" component={CssModule} />
           </Switch>
         </HashRouter>
       </div>
