@@ -9,8 +9,13 @@ this.addEventListener("install", function (event) {
     (async () => {
       const cache = await caches.open("v1");
       console.log("1.添加资源到缓存区");
+
+      const filename = "serviceWorker.js";
+      const pathname = location.pathname;
+      const path = pathname.substr(0, pathname.length - filename.length);
+
       /* 声明要缓存的资源列表 */
-      return cache.addAll(["/assets/images/stardewValley.jpg"]);
+      return cache.addAll([`${path}assets/images/stardewValley.jpg`]);
     })()
     /* 创建一个叫 v1 的缓存区 */
     // caches.open("v1").then(function (cache) {
