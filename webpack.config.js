@@ -37,6 +37,18 @@ module.exports = (env) => {
             test: /\.(less|css)$/,
             use: ["style-loader", "css-loader", "less-loader"],
           },
+          {
+            test: /\.(jpg|png|gif)$/,
+            use: [
+              {
+                loader: "file-loader",
+                options: {
+                  name: '[name].[ext]',
+                  outputPath: "assets/images",
+                },
+              },
+            ],
+          },
         ],
       },
       plugins: [
@@ -46,6 +58,16 @@ module.exports = (env) => {
             {
               from: path.resolve(__dirname, "public/sharedWorker"),
               to: path.resolve(__dirname, "build/sharedWorker"),
+            },
+            {
+              from: path.resolve(__dirname, "public/serviceWorker"),
+              /* 
+                如果将 serviceWorker.js脚本 放在 /serviceWorker 文件夹下
+                那么 service worker 支持的scope，也必须是 /serviceWorker 之下的
+                所以，要放在最外层，这样支持的最大scope就是根了 /
+                综述：service worker 的 max scope 是它所在的目录位置 
+               */
+              to: path.resolve(__dirname, "build"),
             },
           ],
         }),

@@ -12,7 +12,7 @@ module.exports = () => {
       port: 8012,
       hot: true,
       disableHostCheck: true,
-      host: "0.0.0.0",
+      // host: "0.0.0.0",
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
