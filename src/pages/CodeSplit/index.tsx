@@ -2,7 +2,7 @@
  * @Author: liuxw@codoon.com
  * @Date: 2022-03-22 15:16:24
  * @Last Modified by: liuxw@codoon.com
- * @Last Modified time: 2022-03-22 15:25:44
+ * @Last Modified time: 2022-03-22 17:57:52
  */
 
 import React, { FC, memo, useCallback, useEffect, useState } from "react";
@@ -25,6 +25,12 @@ const CodeSplit: FC<IProps> = memo(({}) => {
       </div>
       <div className={styles.btn} onClick={() => history.push("/sharedWorker")}>
         SharedWorker 页面
+      </div>
+      <div
+        className={styles.btn}
+        onClick={() => history.push("/serviceWorker")}
+      >
+        ServiceWorker 页面
       </div>
       <div className={styles.btn} onClick={() => history.push("/")}>
         risu星球 页面
