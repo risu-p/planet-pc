@@ -11,7 +11,7 @@ module.exports = (env) => {
       entry: "./src/entry.tsx",
       output: {
         path: path.resolve(__dirname, "build"),
-        filename: "main.js",
+        filename: "[name].bundle.js",
       },
       resolve: {
         extensions: [".ts", ".tsx", ".js"],
@@ -43,7 +43,7 @@ module.exports = (env) => {
               {
                 loader: "file-loader",
                 options: {
-                  name: '[name].[ext]',
+                  name: "[name].[ext]",
                   outputPath: "assets/images",
                 },
               },
@@ -72,6 +72,17 @@ module.exports = (env) => {
           ],
         }),
       ],
+      // optimization: {
+      //   splitChunks: {
+      //     chunks: "all",
+      // cacheGroups: {
+      //   vendors: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: "vendors",
+      //   },
+      // },
+      //   },
+      // },
     },
     env.development ? devConf() : prodConf()
   );
