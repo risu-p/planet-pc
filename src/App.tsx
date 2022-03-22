@@ -10,6 +10,7 @@ import WorkerPage from "./pages/Worker";
 import SharedWorkerPage from "./pages/SharedWorker";
 import CssModule from "./pages/CssModules";
 import ServiceWorker from "./pages/ServiceWorker";
+import Mobx from "./pages/Mobx";
 
 const PREFIX = "Risu";
 
@@ -27,6 +28,7 @@ class App extends Component {
             <Route exact path="/sharedWorker" component={SharedWorkerPage} />
             <Route exact path="/cssModules" component={CssModule} />
             <Route exact path="/serviceWorker" component={ServiceWorker} />
+            <Route exact path="/mobx" component={Mobx} />
           </Switch>
         </HashRouter>
       </div>
