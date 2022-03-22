@@ -2,7 +2,7 @@
  * @Author: liuxw@codoon.com 
  * @Date: 2022-03-09 18:06:45 
  * @Last Modified by: liuxw@codoon.com
- * @Last Modified time: 2022-03-10 16:11:43
+ * @Last Modified time: 2022-03-22 17:41:57
  */
 
 @prefix: ~"ServiceWorkerPage";
@@ -12,6 +12,21 @@
 
   &-text {
     margin-bottom: 10px;
+
+    &.is-delete {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+
+    .is-italic {
+      font-style: italic;
+    }
+    .is-bold {
+      font-weight: bold;
+    }
+    .is-underline {
+      text-decoration: underline;
+    }
   }
   &-img {
     width: 400px;

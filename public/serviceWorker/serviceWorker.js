@@ -14,6 +14,8 @@ this.addEventListener("install", function (event) {
       const pathname = location.pathname;
       const path = pathname.substr(0, pathname.length - filename.length);
 
+      console.log("1.1 path", path);
+
       /* 声明要缓存的资源列表 */
       return cache.addAll([`${path}assets/images/stardewValley.jpg`]);
     })()
@@ -23,6 +25,14 @@ this.addEventListener("install", function (event) {
     //   return cache.addAll(["/assets/images/stardewValley.jpg"]);
     // })
   );
+});
+
+/**
+ * service worker 安装后
+ * 若有 scope 下的页面请求，会激活 service worker，触发 activate 事件
+ */
+this.addEventListener("activate", function (event) {
+  console.log("Service Worker 激活");
 });
 
 /**
@@ -44,8 +54,8 @@ this.addEventListener("fetch", function (event) {
         // 没有，继续发请求
         const fetchRes = await fetch(event.request);
         /* 并将返回结果加入缓存中 */
-        const cache = await caches.open("v1");
-        cache.put(event.request, fetchRes.clone());
+        // const cache = await caches.open("v1");
+        // cache.put(event.request, fetchRes.clone());
         return fetchRes;
       }
     })()
