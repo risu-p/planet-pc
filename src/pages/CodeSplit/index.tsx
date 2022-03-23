@@ -23,9 +23,6 @@ const CodeSplit: FC<IProps> = memo(({}) => {
       <div className={styles.text}>
         对应页面的代码，只会在实际被访问到时，才下载。而不会进入应用，就下载了所有页面的代码
       </div>
-      <div className={styles.btn} onClick={() => history.push("/sharedWorker")}>
-        SharedWorker 页面
-      </div>
       <div
         className={styles.btn}
         onClick={() => history.push("/serviceWorker")}
