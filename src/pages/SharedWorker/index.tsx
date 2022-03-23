@@ -20,6 +20,8 @@ const PREFIX = "SharedWorkerPage";
 
 type IProps = {};
 
+const NOT_SUPPORT = typeof window.SharedWorker === "undefined";
+
 const SharedWorkerPage: FC<IProps> = memo(({}) => {
   const workerRef = useRef<SharedWorker | null>(null);
 
@@ -35,24 +37,26 @@ const SharedWorkerPage: FC<IProps> = memo(({}) => {
 
   /* 初始化 */
   useEffect(() => {
-    const worker = new SharedWorker(
-      `${window.location.origin}${window.location.pathname}sharedWorker/sharedWorker.js`
-    );
-    workerRef.current = worker;
-    worker.port.postMessage("Hello");
-    worker.port.addEventListener("message", (event) => {
-      console.log(`主线程 接收到了 worker 消息：${event.data}`);
-      // 接受一个当前有多少个页面连接了 shared worker 的个数
-      const connectCount = event.data;
-      setConnectCount(connectCount);
-    });
-    worker.port.start();
-    // worker.port.onmessage = (event) => {
-    //   console.log(`主线程 接收到了 worker 消息：${event.data}`);
-    //   // 接受一个当前有多少个页面连接了 shared worker 的个数
-    //   const connectCount = event.data;
-    //   setConnectCount(connectCount);
-    // };
+    if (!NOT_SUPPORT) {
+      const worker = new SharedWorker(
+        `${window.location.origin}${window.location.pathname}sharedWorker/sharedWorker.js`
+      );
+      workerRef.current = worker;
+      worker.port.postMessage("Hello");
+      worker.port.addEventListener("message", (event) => {
+        console.log(`主线程 接收到了 worker 消息：${event.data}`);
+        // 接受一个当前有多少个页面连接了 shared worker 的个数
+        const connectCount = event.data;
+        setConnectCount(connectCount);
+      });
+      worker.port.start();
+      // worker.port.onmessage = (event) => {
+      //   console.log(`主线程 接收到了 worker 消息：${event.data}`);
+      //   // 接受一个当前有多少个页面连接了 shared worker 的个数
+      //   const connectCount = event.data;
+      //   setConnectCount(connectCount);
+      // };
+    }
 
     /**
      * 正常情况下，页面关闭，即使不手动调`port.close()`，`shared worker`也会自动关闭与该页面的连接
@@ -76,13 +80,19 @@ const SharedWorkerPage: FC<IProps> = memo(({}) => {
   return (
     <>
       <LinkHeader url={"https://juejin.cn/post/7065609156446650381"} />
-      <div className={PREFIX}>
-        <div>试着打开一个新窗口，访问该页面</div>
-        <div>
-          当前有<span className={"is-primary"}> {connectCount} </span>
-          个页面连接到了 shared worker
+      {!NOT_SUPPORT ? (
+        <div className={PREFIX}>
+          <div>试着打开一个新窗口，访问该页面</div>
+          <div>
+            当前有<span className={"is-primary"}> {connectCount} </span>
+            个页面连接到了 shared worker
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className={PREFIX}>
+          <div>当前浏览器不支持 SharedWorker，尝试用 PC端Chrome 打开</div>
+        </div>
+      )}
     </>
   );
 });

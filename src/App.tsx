@@ -3,8 +3,24 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import "./index.less";
 import loadable from "@loadable/component";
+import qs from "qs";
+import VConsole from "vconsole";
 
 const PREFIX = "Risu";
+
+/* 通用的url参数 */
+interface IUrlParam {
+  consoleEnable?: "1";
+}
+
+const URL_PARAM: IUrlParam = qs.parse(window.location.search, {
+  ignoreQueryPrefix: true,
+});
+
+if (URL_PARAM.consoleEnable === "1") {
+  /* 启动移动端vconsole控制台 */
+  const vConsole = new VConsole();
+}
 
 class App extends Component {
   render() {
