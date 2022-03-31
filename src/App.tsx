@@ -78,6 +78,11 @@ class App extends Component {
               path="/codeSplit"
               component={loadable(() => import("./pages/CodeSplit"))}
             />
+            <Route
+              exact
+              path="/nest"
+              component={loadable(() => import("./pages/Nest"))}
+            />
           </Switch>
         </HashRouter>
       </div>
