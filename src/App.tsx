@@ -83,6 +83,11 @@ class App extends Component {
               path="/nest"
               component={loadable(() => import("./pages/Nest"))}
             />
+            <Route
+              exact
+              path="/useTransition"
+              component={loadable(() => import("./pages/UseTransition"))}
+            />
           </Switch>
         </HashRouter>
       </div>
