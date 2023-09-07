@@ -88,6 +88,11 @@ class App extends Component {
               path="/useTransition"
               component={loadable(() => import("./pages/UseTransition"))}
             />
+            <Route
+              exact
+              path="/column"
+              component={loadable(() => import("./pages/Column"))}
+            />
           </Switch>
         </HashRouter>
       </div>
